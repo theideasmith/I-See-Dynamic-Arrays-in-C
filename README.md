@@ -17,7 +17,7 @@ These were helpful in development. While not all of the two structs are supporte
 ###TODO LIST:
 
 1. Remove from arrays
-2. free() memory
+2. `free()` memory
 3. Change the value stored at any index in the array. 
 4. Support for arrays of the different structs
 5. **A universal (any data type) and infinitely nestable dynamic array system**
