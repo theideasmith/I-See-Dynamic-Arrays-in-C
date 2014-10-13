@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <objc/objc.h>
+#include <mutable_arrays.h>
 
 #define Empty ((void *)0)
 #define totalCharlieplexed(outs) ((outs * outs) - outs)
