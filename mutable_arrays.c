@@ -11,22 +11,22 @@ typedef struct {
     
 }one_D_Array;
 
+typedef struct  {
+    int lastIndx;
+    int count;
+    one_D_Array *array; 
+}two_D_Array;
+
 //##################Helper Functions#############################
 
 int sizeint = 1;
-void print_Array(int *array, int lastInd) {
-    for (int i = 0; i <=lastInd ; i++) {
-        printf("%d",array[i]);
-    }
-}
-
 
 void printVal(int val) {
     printf("%d", val);
 }
 
 int countOfArray(int *ar){
-    int sizf = sizeof(ar) / sizeof(int);
+    int sizf = sizeof(*ar) / sizeof(int);
     printVal(sizf);
     return sizf;
 }
@@ -54,7 +54,12 @@ one_D_Array addToArray(one_D_Array array, int toAdd) {
     array.lastIndx++;
     
     return array;
-    // 2222222222
+}
+
+void print_Array(int *array, int lastInd) {
+    for (int i = 0; i <=lastInd ; i++) {
+        printf("%d",array[i]);
+    }
 }
 
 //##################2D Array#############################
@@ -64,7 +69,7 @@ int **init_2d_Array(void) {
     return newarr;
 }
 
-void print2dArray(int **array, int len, int lastInd) {
+void print_2d_Array(int **array, int len, int lastInd) {
     for (int range = 0; range <= lastInd; range++) {
         for (int r2 = 0; r2 < len; r2++) {
             printVal(array[range][r2]);
@@ -79,7 +84,37 @@ int **addArrayToArray(int **array, int *toAdd, int oldcount){//This should add a
     array[oldcount] = toAdd;
     return array;
 }
+//##################2D STRUCT ARRAY####################
+//I think that if a Macro was used, it would allow for universal arrays, but lets keep it simple for now. 
+one_D_Array* init_Struct_Array_1D(){
+    one_D_Array *new = malloc(sizeof(one_D_Array ));
+    return new;
+}
 
+two_D_Array init_2D_Struct(void){
+    two_D_Array new;
+    new.lastIndx = 0;
+    new.count = 0;
+    new.array = init_Struct_Array_1D();
+    return new;
+}
+
+void add_To_2D_Struct(one_D_Array toAdd, two_D_Array addedTo) {
+
+    addedTo.array = realloc(addedTo.array, sizeof(one_D_Array *)*(addedTo.count+1));
+    addedTo.array[addedTo.lastIndx] = toAdd;
+    addedTo.count++;
+    addedTo.lastIndx = addedTo.count-1;
+    print_Array(addedTo.array[0].array,addedTo.array[0].lastIndx);
+
+}
+void print_2D_Struct(two_D_Array toPrint, int untilIndx){
+    for (int i = 0; i < untilIndx; i++) {
+        print_Array(((one_D_Array) toPrint.array[i]).array,((one_D_Array) toPrint.array[i]).lastIndx);
+    }
+
+}
+//##################### Main ############################
 int main()
 {
     PRINT_STR("Please enter a number");
@@ -99,17 +134,25 @@ int main()
         PRINT_STR(">>\n");
         count ++;
         
-        
     }
     //LOOP A
     //LOOP B
-    for (int i =0; i < count; i++) {
-        printf("\n<<%d:",i);
-        print_Array(tu_D[i], 9);
-        PRINT_STR(" of Size:");
-        countOfArray(tu_D[i]);
-        PRINT_STR(">>\n");
-    }
+    // for (int i =0; i < count; i++) {
+    //     printf("\n<<%d:",i);
+    //     print_Array(tu_D[i], 9);
+    //     PRINT_STR(" of Size:");
+    //     countOfArray(tu_D[i]);
+    //     PRINT_STR(">>\n");
+    // }
+    two_D_Array addedTo= init_2D_Struct();
+    one_D_Array toAdd = init_one_D_Array();
+    addToArray(toAdd,4);
+
+    add_To_2D_Struct(toAdd,addedTo);
+
+    print_2D_Struct(addedTo,1);
+    PRINT_STR("\n");
+
     return 0;
     //LOOP B
 }
