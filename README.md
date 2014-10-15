@@ -23,4 +23,8 @@ These were helpful in development. While not all of the two structs are supporte
 5. **A universal (any data type) and infinitely nestable dynamic array system**
 I'd love for someone else to join me in making the best repo for dynamic && mutable arrays in C. 
 
+###Things learnt while doing this:
+
+
+
 **A big thanks to [R Sahu](http://stackoverflow.com/users/434551/r-sah) for helping me with this on [Stack Overflow](http://stackoverflow.com/questions/26373830/setting-and-using-variable-in-different-scopes-not-working-in-c?noredirect=1#comment41407131_26373830)**
