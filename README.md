@@ -30,7 +30,7 @@ I'd love for someone else to join me in making the best repo for dynamic && muta
 #####Functions in Structs
 
     void print_Console(const char *str) {
-    printf("%s",str);
+        printf("%s",str);
     }
     
     typedef struct {
@@ -48,11 +48,13 @@ I'd love for someone else to join me in making the best repo for dynamic && muta
   
     ...
     testStr str;
-    /*--(Block)--*/
+    
+    //BLOCK
     str.consolePrint = ^(const char *str){
         printf("%s",str);
     };
-    /*--(End-Block)—*/
+    //END BLOCK
+    
     ...
     //OUTPUT: "Hello World"
 
@@ -61,9 +63,9 @@ I'd love for someone else to join me in making the best repo for dynamic && muta
 ####Typedefs in Functions
     
     int main() {
-    typedef struct {
-        void (*consolePrint)(const char *str);
-    }testStr;
+        typedef struct {
+            void (*consolePrint)(const char *str);
+        }testStr;
     }
 
 
