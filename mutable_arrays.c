@@ -1,21 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "mutable_arrays.h"
 #define PRINT_STR(str) {\
 printf("%s", str);\
 }
 
-typedef struct {
-    int lastIndx;
-    int *array;
-    
-}one_D_Array;
-
-typedef struct  {
-    int lastIndx;
-    int count;
-    one_D_Array *array; 
-}two_D_Array;
 
 //##################Helper Functions#############################
 
